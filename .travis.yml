@@ -1,13 +1,21 @@
 language: java
 jdk: oraclejdk8
-
 services:
-  - docker
-  
+- docker
 before_install:
-  - sudo service mysql stop
-  - docker pull takimatraining/devops-training-db
-  - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
-  
-  script :
-    - mvn verify
+- sudo service mysql stop
+- docker pull takimatraining/devops-training-db
+- docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
+script:
+- mvn verify
+env:
+  global:
+    secure: UO0DJfhaZyJnk6+ddX38bODrGAYm3rN8DRGo/dp60KrYC/EjHdxcpwnQWTvz2mXjtlJTTH1f7r9cdXQzYC3rnUZE1mfkEJH6befXEKO/wEchGYozvIZ0DG4angG74tj5d2/LwuYMYxFRiGYn+XFyH1W48JRJvTrqaGla/LHahfBPa8q9Boj4ND8oimzLGrxOTcp2F4r0oEXINqUrJK9/n+vdn/pEodnOdNi0JBn+WzwDCzJU87DQBYc4ZP1oNDTh+mzQwaSLtZnQExg9Hq91E0Cj4yTA/M3kBdThUVpJ/KVCqJesmHfM0xltDH6lGZy7w5I3SR/uggj20JAG8wzwS5VAqL07VsQEZHGNtzXuGtzL/OnfORUzWZMtNnLcprI0XT5jFta6UQ/dOFNna3zNip/GagqpcsK2DYw7LLyZXlKXOzuZxScpbafxwlBgMTaRyJ9ooqTRXlt3cuzSbfrR6NO21mW8ae9oZ+ZX92ZmStxll5Gsz6FzdaY66fC0kRifXMKnNUNBI4Y6UO0VoFSp5krUyfKHC8lA1wBpLKaFUGkqWMoXpLqb7q8oj+IGULaVQtuDIZX/AaOoeiPmMahvwBOvLy0aZcY2SZPmnBezCn8loSovpybKjX23w7u6V4x/mS8E173zm479uIBiYLU+RaKn8JlpGUPafCUH9/Ns/hk=
+script:
+  - |
+    mvn clean install sonar:sonar \
+    -Dsonar.projectKey=Custom2043_sample-application-students \
+    -Dsonar.organization=custom2043-github \
+    -Dsonar.host.url=https://sonarcloud.io \
+    -Dsonar.login=1cee14a4cb4a0fafc9987f7dfa547a49fa19b00b
+    
