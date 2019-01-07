@@ -7,15 +7,21 @@ before_install:
 - docker pull takimatraining/devops-training-db
 - docker run -d -p 127.0.0.1:3306:3306 takimatraining/devops-training-db
 script:
-- mvn verify
+- |
+  mvn clean install sonar:sonar \
+  -Dsonar.projectKey=gneay \
+  -Dsonar.organization=custom2043-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=1cee14a4cb4a0fafc9987f7dfa547a49fa19b00b
 env:
   global:
-    secure: UO0DJfhaZyJnk6+ddX38bODrGAYm3rN8DRGo/dp60KrYC/EjHdxcpwnQWTvz2mXjtlJTTH1f7r9cdXQzYC3rnUZE1mfkEJH6befXEKO/wEchGYozvIZ0DG4angG74tj5d2/LwuYMYxFRiGYn+XFyH1W48JRJvTrqaGla/LHahfBPa8q9Boj4ND8oimzLGrxOTcp2F4r0oEXINqUrJK9/n+vdn/pEodnOdNi0JBn+WzwDCzJU87DQBYc4ZP1oNDTh+mzQwaSLtZnQExg9Hq91E0Cj4yTA/M3kBdThUVpJ/KVCqJesmHfM0xltDH6lGZy7w5I3SR/uggj20JAG8wzwS5VAqL07VsQEZHGNtzXuGtzL/OnfORUzWZMtNnLcprI0XT5jFta6UQ/dOFNna3zNip/GagqpcsK2DYw7LLyZXlKXOzuZxScpbafxwlBgMTaRyJ9ooqTRXlt3cuzSbfrR6NO21mW8ae9oZ+ZX92ZmStxll5Gsz6FzdaY66fC0kRifXMKnNUNBI4Y6UO0VoFSp5krUyfKHC8lA1wBpLKaFUGkqWMoXpLqb7q8oj+IGULaVQtuDIZX/AaOoeiPmMahvwBOvLy0aZcY2SZPmnBezCn8loSovpybKjX23w7u6V4x/mS8E173zm479uIBiYLU+RaKn8JlpGUPafCUH9/Ns/hk=
-script:
-  - |
-    mvn clean install sonar:sonar \
-    -Dsonar.projectKey=gneay \
-    -Dsonar.organization=custom2043-github \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.login=1cee14a4cb4a0fafc9987f7dfa547a49fa19b00b
-    
+  - secure: UO0DJfhaZyJnk6+ddX38bODrGAYm3rN8DRGo/dp60KrYC/EjHdxcpwnQWTvz2mXjtlJTTH1f7r9cdXQzYC3rnUZE1mfkEJH6befXEKO/wEchGYozvIZ0DG4angG74tj5d2/LwuYMYxFRiGYn+XFyH1W48JRJvTrqaGla/LHahfBPa8q9Boj4ND8oimzLGrxOTcp2F4r0oEXINqUrJK9/n+vdn/pEodnOdNi0JBn+WzwDCzJU87DQBYc4ZP1oNDTh+mzQwaSLtZnQExg9Hq91E0Cj4yTA/M3kBdThUVpJ/KVCqJesmHfM0xltDH6lGZy7w5I3SR/uggj20JAG8wzwS5VAqL07VsQEZHGNtzXuGtzL/OnfORUzWZMtNnLcprI0XT5jFta6UQ/dOFNna3zNip/GagqpcsK2DYw7LLyZXlKXOzuZxScpbafxwlBgMTaRyJ9ooqTRXlt3cuzSbfrR6NO21mW8ae9oZ+ZX92ZmStxll5Gsz6FzdaY66fC0kRifXMKnNUNBI4Y6UO0VoFSp5krUyfKHC8lA1wBpLKaFUGkqWMoXpLqb7q8oj+IGULaVQtuDIZX/AaOoeiPmMahvwBOvLy0aZcY2SZPmnBezCn8loSovpybKjX23w7u6V4x/mS8E173zm479uIBiYLU+RaKn8JlpGUPafCUH9/Ns/hk=
+  - secure: axQwQH0D8suVjj7TyRhhEfzEPCIV0tk4H+92SzyYec0PlZYXPCHtXdyMZ+6nAM1Mnb2K18bwRlXc1trzqHROSfO6+sV9s//lrQQSSGLTG0nBVvFvhe8YJziR7vkJ80CJEyvO+sjRBjN1QDSE3OqMFkwMISQX+9hqc4nK8yp1Bg8KmkTCSnbb/XND/oxKTolflXfYPsKB0lQwFI6c1P1LBNlV0QYXFw6AyRrDP5cEXxlf4Wh9QpWeXmsuV72+rf9rvYLGxoTvSMLLkTojkV0UDDM/vIJP6I+znjcYda/9OovXG0jf3SWp1MpyEqvl0F+sPao5cvdZEt7PcFTlO1uutrFCJowI70c80PfV2BiPxFR5c1Jp96URAqdkqZi0yycVR9wj9cRn3xhOR1ESK6rVBMw+xWlp8t0UtOehvlnJkDkB1NOTBDki1ngFdGwgKsZeg3KX93iGDh5Qpj2OASGhGCc341gYYSfgWFfVWqEdG6VaNG6J35eTzdJoMvWH58Ciee2MJIKsO1eEJk1YuTQjLElOUhUwMP1Oxo91TflCi08uOJRlWDxC9weWmSAsxU386q0WCP8c8tRCahovGAFKJmzpB6FPhtRQe4e2XNsm5b8tZnuKXvozH0oxLP1obmO4onaIua9zWtBgjR2HSWQ+ZoXxL6Ty2gb7m1BtS+lAIH0=
+  - secure: P9d5kJZRAdLILKfAtRcW03ctECdNXCvHBbvB0jqMSlVQC02720mNopsCtnucgTVHGcufbAFRBGwWrfjUTdfLSDqzqUWSeTn2T7XbuEuvb0L/5rBpFn73KNqlMwI6drbG/NuKw5XgKGQZB2Yj/DdpTEeTM5cmxvr6oUVFrEtj5mtuZTcWGTzWuKVyl+B4leuwDcyrnfr8RQpVNns/ttwNm1lYPN56DqXQQKO94P1erXWaroOg8ffjgQdO5t+oFkpKHEqnAeZNklNYmXxGLB5OEY9iGKhKI9GyV05cg17x158PrbCxDBhgPSu225Owo3oRUVBFDmmd22RuxhuoMf7tqxKh5QM8Omz/51XXJ7EZ3MGcU+6pOpMeaKZKc75OGnpfKTk7/oauFuOrWIzUjUGjbzx0NAcdPWvr5Lmor9MpQpfpRXkP6FBazrm40vVvbawfx5KHAKP3fSzWuoxtV+lGA5Jd3PGHuIRn1v7LQFKf9aXyXVSbB16wDnFD6J/xuzYTUvsnq+C4dDM/+tF3N5Ah4LcBJYolLur+VksT5UMPP9K2T9YiQYPTLuFwKELNNinkMRJAVTFHY1Y5GU1htnrfU5QkyjzJncJFySRin43z/bYrkewc+MiUJ5tosXtzqdjzvDVw53uKZkr2YtD3qFoBrdSDfLjZYU7wDjiRVi2crFo=
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
+  - export IMAGE_NAME=takimatraining/sample-application
+  - docker build -t $IMAGE_NAME:$TRAVIS_COMMIT
+  - docker tag $IMAGE_NAME:$TRAVIS_COMMIT $IMAGE_NAME:$TAG
+  - docker push $IMAGE_NAME:$TAG
