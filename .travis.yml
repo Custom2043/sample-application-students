@@ -14,7 +14,7 @@ env:
 script:
   - |
     mvn clean install sonar:sonar \
-    -Dsonar.projectKey=Custom2043_sample-application-students \
+    -Dsonar.projectKey=gneay \
     -Dsonar.organization=custom2043-github \
     -Dsonar.host.url=https://sonarcloud.io \
     -Dsonar.login=1cee14a4cb4a0fafc9987f7dfa547a49fa19b00b
